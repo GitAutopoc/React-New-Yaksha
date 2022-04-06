@@ -149,11 +149,17 @@ const writeTextFiles = function (result, outputFiles, cb) {
   if (!!outputFiles[fileName])
     cb(outputFiles[fileName], `${fileOutput}\n`);
 
-  let  request = new XMLHttpRequest();
-  request.open('POST', 'https://yaksha-stage-sbfn.azurewebsites.net/api/TestCaseResultsEnqueue?code=AjU0mofZlYs9oYbZnJpVwJWRY1dRKkDyS3QDY8aJAvrcjJvgBAXVDg==')
+	fetch('https://yaksha-stage-sbfn.azurewebsites.net/api/TestCaseResultsEnqueue?code=AjU0mofZlYs9oYbZnJpVwJWRY1dRKkDyS3QDY8aJAvrcjJvgBAXVDg==', {
+  headers: { "Content-Type": "application/json; charset=utf-8" },
+  method: 'POST',
+  body: finalResult
+})
+	
+  //let  request = new XMLHttpRequest();
+  //request.open('POST', 'https://yaksha-stage-sbfn.azurewebsites.net/api/TestCaseResultsEnqueue?code=AjU0mofZlYs9oYbZnJpVwJWRY1dRKkDyS3QDY8aJAvrcjJvgBAXVDg==')
   
-  request.setRequestHeader('content-type', 'application/json')
-  request.send(finalResult);
+ // request.setRequestHeader('content-type', 'application/json')
+ // request.send(finalResult);
   
 
   
